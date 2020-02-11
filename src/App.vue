@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <CreateDog v-bind:addDog="addDog"></CreateDog>
+    <DogList v-bind:dogs="dogs"></DogList>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DogList from './components/DogList.vue'
+import CreateDog from './components/CreateDog.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    DogList,
+    CreateDog
+  },
+  data() {
+    return {
+      dogs: []
+    }
+  },
+  methods: {
+    addDog(dog) {
+      this.dogs.push(dog)
+    }
   }
 }
 </script>
